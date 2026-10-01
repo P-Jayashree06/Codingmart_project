@@ -1,0 +1,7 @@
+# Merge into application.yml
+bloodbank:
+  donor:
+    min-age: 18
+    max-age: 65
+    min-weight-kg: 50
+    donation-gap-days: 90

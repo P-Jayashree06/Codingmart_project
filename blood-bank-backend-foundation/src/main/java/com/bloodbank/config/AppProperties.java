@@ -1,0 +1,5 @@
+package com.bloodbank.config;
+import jakarta.validation.Valid; import jakarta.validation.constraints.Min; import jakarta.validation.constraints.NotBlank; import jakarta.validation.constraints.Size; import lombok.Getter; import lombok.Setter; import org.springframework.boot.context.properties.ConfigurationProperties; import org.springframework.validation.annotation.Validated;
+@Getter @Setter @Validated @ConfigurationProperties(prefix="bloodbank")
+public class AppProperties { @Min(1) private int shelfLifeDays=42; @Min(1) private int donationGapDays=90; @Min(1) private int minAge=18; @Min(1) private int maxAge=65; @Min(1) private int minWeightKg=50; @Min(1) private int minVolumeMl=300; @Min(1) private int maxVolumeMl=500; @Min(1) private int maxUnitsPerRequest=10; @Min(0) private int lowStockThreshold=10; @Min(0) private int nearExpiryDays=7; @Min(0) private int nearExpiryAlertDays=3; @Min(1) private int duplicateWindowMinutes=10; @Valid private Jwt jwt=new Jwt();
+ @Getter @Setter public static class Jwt { @NotBlank @Size(min=32,message="JWT secret must be at least 32 characters") private String secret; @Min(1) private long expirySeconds=3600; }}
